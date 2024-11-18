@@ -149,7 +149,7 @@ const LandingPage = () => {
 
           {submitted && (
             <CustomAlert>
-              Thanks for joining! We'll notify you when we launch.
+              Thanks for joining! We&apos;ll notify you when we launch.
             </CustomAlert>
           )}
         </section>
