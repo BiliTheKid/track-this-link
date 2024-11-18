@@ -1,10 +1,14 @@
 'use client';
 
-
-import React, { useState, FormEvent } from 'react'; // Add FormEvent import
+import React, { useState, FormEvent } from 'react';
 import { Bell, DollarSign, Heart, PiggyBank, Github, Twitter, Linkedin, Instagram } from 'lucide-react';
 
-// Custom Alert Component
+// Utility function for smooth scrolling
+const scrollToElement = (elementId: string) => {
+  const element = document.getElementById(elementId);
+  element?.scrollIntoView({ behavior: 'smooth' });
+};
+
 const CustomAlert = ({ children }: { children: React.ReactNode }) => (
   <div className="mt-4 p-4 rounded-lg bg-green-500/10 text-green-500 border border-green-500/20">
     {children}
@@ -28,14 +32,12 @@ const LandingPage = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  // Add proper type for the event parameter
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(true);
     setEmail('');
   };
-  
-  
+
   const features = [
     {
       icon: <DollarSign className="w-12 h-12 text-green-500" />,
@@ -68,7 +70,7 @@ const LandingPage = () => {
             <Logo />
             <div className="hidden md:flex space-x-8">
               <button 
-                onClick={() => document.getElementById('signup').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToElement('signup')}
                 className="text-green-500 hover:text-green-400 font-semibold transition-colors"
               >
                 Join Waitlist
@@ -91,7 +93,7 @@ const LandingPage = () => {
           </p>
           <button 
             className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            onClick={() => document.getElementById('signup').scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => scrollToElement('signup')}
           >
             Start Saving Today
           </button>
