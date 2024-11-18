@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+
+import React, { useState, FormEvent } from 'react'; // Add FormEvent import
 import { Bell, DollarSign, Heart, PiggyBank, Github, Twitter, Linkedin, Instagram } from 'lucide-react';
 
-// Custom Alert Component (replacing shadcn/ui Alert)
+// Custom Alert Component
 const CustomAlert = ({ children }: { children: React.ReactNode }) => (
   <div className="mt-4 p-4 rounded-lg bg-green-500/10 text-green-500 border border-green-500/20">
     {children}
@@ -27,12 +28,14 @@ const LandingPage = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  // Add proper type for the event parameter
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(true);
     setEmail('');
   };
-
+  
+  
   const features = [
     {
       icon: <DollarSign className="w-12 h-12 text-green-500" />,
